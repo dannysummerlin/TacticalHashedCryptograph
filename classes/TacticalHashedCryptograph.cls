@@ -7,7 +7,7 @@ public class TacticalHashedCryptograph {
 		for(TacticalHashedCryptograph.inputData input : inputs) {
 			try {
 				Blob hashedValue = Crypto.generateDigest(input.hashType, Blob.valueOf(input.source));
-				outputs.add(EncodingUtil.base64Encode(hashedValue));
+				outputs.add(EncodingUtil.convertToHex(hashedValue));
 			} catch(Exception e) {
 				throw newTacticalHashedCryptographException(e.getMessage());
 			}
@@ -26,7 +26,7 @@ public class TacticalHashedCryptograph {
 		}
 		public inputData(String s) {
 			this();
-			this.source = s.toUpperCase();
+			this.source = s;
 		}
 		public inputData(String s, String h) {
 			this(s);
